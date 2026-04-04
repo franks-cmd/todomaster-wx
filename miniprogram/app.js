@@ -4,7 +4,7 @@ App({
     storageMode: 'local', // 'local' or 'cloud'
     categories: [],
     pendingReminders: [],
-    cloudEnv: 'todomaster-prod' // 替换为你的云环境ID
+    cloudEnv: 'cloud1-9gz2y4r6fe5cdcb0'
   },
 
   onLaunch() {

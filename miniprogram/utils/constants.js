@@ -38,7 +38,7 @@ const FILTER_STATUS = {
 }
 
 // 订阅消息模板ID（需要在微信公众平台申请后替换）
-const SUBSCRIBE_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
+const SUBSCRIBE_TEMPLATE_ID = '-ZzYeykHOkj15FUon2XsT7SI-a0J8HjI0YHXOaNTbek'
 
 // 提醒窗口（提前多少毫秒提醒）
 const REMINDER_WINDOW = 30 * 60 * 1000 // 30分钟

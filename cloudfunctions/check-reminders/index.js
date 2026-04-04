@@ -5,7 +5,7 @@ const db = cloud.database()
 const _ = db.command
 
 // 订阅消息模板ID（需替换为实际申请的模板ID）
-const TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
+const TEMPLATE_ID = '-ZzYeykHOkj15FUon2XsT7SI-a0J8HjI0YHXOaNTbek'
 
 // 提醒窗口：提前30分钟提醒
 const REMINDER_WINDOW_MS = 30 * 60 * 1000
@@ -65,10 +65,11 @@ exports.main = async () => {
           templateId: TEMPLATE_ID,
           page: `pages/todo-detail/todo-detail?id=${todo._id}`,
           data: {
-            thing1: { value: todo.title.substring(0, 20) },
-            time2: { value: dueDateStr },
-            phrase3: { value: priorityMap[todo.priority] || '中' },
-            thing4: { value: reminderNote }
+            thing1: { value: todo.title.substring(0, 20) },       // 事项主题
+            thing2: { value: (todo.description || '无').substring(0, 20) }, // 事项描述
+            phrase3: { value: priorityMap[todo.priority] || '中' }, // 紧急度
+            time4: { value: dueDateStr },                          // 截止时间
+            thing5: { value: reminderNote }                        // 备注消息
           }
         })
 
