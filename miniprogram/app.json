@@ -1,0 +1,46 @@
+{
+  "cloud": true,
+  "pages": [
+    "pages/index/index",
+    "pages/add-todo/add-todo",
+    "pages/todo-detail/todo-detail",
+    "pages/categories/categories",
+    "pages/search/search",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1B2838",
+    "navigationBarTitleText": "TodoMaster",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F2F0EB",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8A8A8A",
+    "selectedColor": "#1B2838",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "待办",
+        "iconPath": "images/tab-todo.png",
+        "selectedIconPath": "images/tab-todo-active.png"
+      },
+      {
+        "pagePath": "pages/categories/categories",
+        "text": "分类",
+        "iconPath": "images/tab-category.png",
+        "selectedIconPath": "images/tab-category-active.png"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "设置",
+        "iconPath": "images/tab-settings.png",
+        "selectedIconPath": "images/tab-settings-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

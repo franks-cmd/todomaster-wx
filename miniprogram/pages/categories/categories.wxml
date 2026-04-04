@@ -1,0 +1,61 @@
+<view class="page">
+  <view class="page-header">
+    <text class="title-xl">分类</text>
+    <view class="btn btn-sm btn-primary" bindtap="showAddModal">
+      <text>+ 新建</text>
+    </view>
+  </view>
+
+  <!-- 分类列表 -->
+  <view class="cat-list" wx:if="{{categories.length > 0}}">
+    <view class="cat-card card"
+      wx:for="{{categories}}" wx:key="id"
+      style="animation-delay: {{index * 60}}ms;">
+      <view class="cat-card-inner" bindtap="onEditCategory" data-index="{{index}}">
+        <view class="cat-color-bar" style="background: {{item.color}};"></view>
+        <view class="cat-info">
+          <text class="cat-name">{{item.name}}</text>
+          <text class="cat-count">{{item._todoCount || 0}} 个待办</text>
+        </view>
+        <text class="cat-arrow">›</text>
+      </view>
+      <!-- 删除按钮 -->
+      <view class="cat-delete" catchtap="onDeleteCategory" data-index="{{index}}">
+        <text class="delete-icon">🗑</text>
+      </view>
+    </view>
+  </view>
+
+  <empty-state wx:if="{{categories.length === 0}}" type="no-categories" />
+
+  <!-- 新建/编辑弹窗 -->
+  <view class="modal-mask" wx:if="{{showModal}}" bindtap="hideModal">
+    <view class="modal-content anim-slide-up" catchtap="noop">
+      <text class="modal-title">{{editIndex >= 0 ? '编辑分类' : '新建分类'}}</text>
+
+      <view class="form-section">
+        <text class="form-label">名称</text>
+        <input class="input-field"
+          placeholder="分类名称"
+          value="{{modalName}}"
+          bindinput="onModalNameInput"
+          maxlength="30"
+          focus="{{showModal}}" />
+      </view>
+
+      <view class="form-section">
+        <text class="form-label">颜色</text>
+        <color-picker value="{{modalColor}}" bind:change="onModalColorChange" />
+      </view>
+
+      <view class="modal-actions">
+        <view class="btn btn-secondary" style="flex:1;" bindtap="hideModal">
+          <text>取消</text>
+        </view>
+        <view class="btn btn-primary" style="flex:1;" bindtap="onSaveCategory">
+          <text>保存</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

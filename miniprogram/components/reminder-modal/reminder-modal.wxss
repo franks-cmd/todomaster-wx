@@ -1,0 +1,113 @@
+.reminder-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(27, 40, 56, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+}
+
+.reminder-sheet {
+  width: 100%;
+  max-height: 70vh;
+  background: #FFFFFF;
+  border-radius: 32rpx 32rpx 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 32rpx 24rpx;
+  border-bottom: 2rpx solid #F2F0EB;
+}
+
+.sheet-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1B2838;
+}
+
+.sheet-close {
+  font-size: 36rpx;
+  color: #8EA3B2;
+  padding: 8rpx;
+}
+
+.sheet-body {
+  max-height: 50vh;
+  padding: 16rpx 32rpx 32rpx;
+}
+
+.reminder-item {
+  padding: 24rpx;
+  background: #F2F0EB;
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.reminder-item--overdue {
+  background: rgba(217, 79, 79, 0.06);
+  border-left: 6rpx solid #D94F4F;
+}
+
+.reminder-info {
+  margin-bottom: 16rpx;
+}
+
+.reminder-type-tag {
+  display: inline-block;
+  font-size: 22rpx;
+  font-weight: 600;
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+  margin-bottom: 8rpx;
+}
+
+.reminder-type-tag.overdue {
+  background: rgba(217, 79, 79, 0.12);
+  color: #D94F4F;
+}
+
+.reminder-type-tag.upcoming {
+  background: rgba(224, 159, 62, 0.12);
+  color: #E09F3E;
+}
+
+.reminder-msg {
+  display: block;
+  font-size: 28rpx;
+  color: #2D4356;
+  line-height: 1.5;
+  margin-top: 8rpx;
+}
+
+.reminder-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64rpx;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.action-done {
+  background: #7A9E7E;
+  color: #FFFFFF;
+}
+
+.action-dismiss {
+  background: #E8E4DD;
+  color: #5A7184;
+}

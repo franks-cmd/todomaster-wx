@@ -1,0 +1,319 @@
+@import './styles/variables.wxss';
+
+/* ============================================
+   Global Styles
+   ============================================ */
+
+/* === Reset & Base === */
+view, text, navigator, button, input, textarea, picker {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+  font-size: inherit;
+}
+
+button::after {
+  border: none;
+}
+
+/* === Page Container === */
+.page {
+  min-height: 100vh;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--tab-bar-height) + 40rpx);
+  background-color: var(--color-parchment);
+}
+
+.page--no-tab {
+  padding-bottom: var(--page-padding);
+}
+
+/* === Card === */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-sm);
+}
+
+/* === Typography === */
+.title-display {
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--text-primary);
+  letter-spacing: -1rpx;
+}
+
+.title-xl {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--text-primary);
+}
+
+.title-lg {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.title-md {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.text-caption {
+  color: var(--text-tertiary);
+  font-size: var(--font-size-xs);
+}
+
+/* === Buttons === */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  transition: opacity var(--transition-fast);
+}
+
+.btn:active {
+  opacity: 0.7;
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: var(--text-inverse);
+}
+
+.btn-secondary {
+  background: var(--color-parchment);
+  color: var(--text-primary);
+  border: 2rpx solid var(--color-parchment-dark);
+}
+
+.btn-copper {
+  background: var(--color-copper);
+  color: var(--text-inverse);
+}
+
+.btn-danger {
+  background: var(--color-danger);
+  color: var(--text-inverse);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-sm {
+  height: 64rpx;
+  font-size: var(--font-size-sm);
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: var(--radius-full);
+  padding: 0;
+}
+
+/* === FAB (Floating Action Button) === */
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: calc(var(--tab-bar-height) + 40rpx);
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: var(--radius-full);
+  background: var(--color-ink);
+  color: var(--text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-xl);
+  z-index: 100;
+  transition: transform var(--transition-base);
+}
+
+.fab:active {
+  transform: scale(0.92);
+}
+
+.fab-icon {
+  font-size: 56rpx;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* === Form Elements === */
+.input-field {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 var(--space-lg);
+  background: var(--color-parchment);
+  border: 2rpx solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
+}
+
+.input-field--focus {
+  border-color: var(--color-copper);
+  background: var(--color-white);
+}
+
+.textarea-field {
+  width: 100%;
+  min-height: 200rpx;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-parchment);
+  border: 2rpx solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  line-height: var(--line-height-relaxed);
+}
+
+.form-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2rpx;
+  margin-bottom: var(--space-sm);
+}
+
+/* === Section === */
+.section {
+  margin-bottom: var(--space-xl);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+/* === Divider === */
+.divider {
+  height: 2rpx;
+  background: var(--color-parchment-dark);
+  margin: var(--space-md) 0;
+}
+
+/* === Badge === */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4rpx 16rpx;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+/* === Loading === */
+.loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(242, 240, 235, 0.6);
+  z-index: 999;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.anim-fade-in {
+  animation: fadeIn 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-slide-up {
+  animation: slideUp 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* === Swipe Action === */
+.swipe-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.swipe-actions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.swipe-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160rpx;
+  color: var(--text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* === Empty State === */
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xxl) var(--space-xl);
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: var(--space-lg);
+  opacity: 0.3;
+}
+
+.empty-text {
+  font-size: var(--font-size-md);
+  color: var(--text-tertiary);
+  text-align: center;
+}

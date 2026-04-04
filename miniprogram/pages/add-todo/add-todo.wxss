@@ -1,0 +1,112 @@
+.form-section {
+  margin-bottom: 40rpx;
+}
+
+/* Priority selector */
+.priority-selector {
+  display: flex;
+  gap: 16rpx;
+}
+
+.priority-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  background: #FFFFFF;
+  border: 2rpx solid #E8E4DD;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #5A7184;
+  transition: all 200ms ease;
+}
+
+.priority-option:active {
+  transform: scale(0.96);
+}
+
+.priority-option--active {
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.12);
+}
+
+.priority-high-active { background: #D94F4F; }
+.priority-medium-active { background: #E09F3E; }
+.priority-low-active { background: #5B8FB9; }
+
+.p-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+}
+
+.priority-option--active .p-dot {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Picker field */
+.picker-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  padding: 0 24rpx;
+  background: #F2F0EB;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #1B2838;
+}
+
+.picker-field--half {
+  flex: 1;
+}
+
+.picker-value {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.picker-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.picker-placeholder {
+  color: #B8C4CC;
+}
+
+.picker-arrow {
+  font-size: 36rpx;
+  color: #B8C4CC;
+  font-weight: 300;
+}
+
+/* Date row */
+.date-row {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.clear-date {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8EA3B2;
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+/* Actions */
+.form-actions {
+  margin-top: 60rpx;
+  padding-bottom: 40rpx;
+}

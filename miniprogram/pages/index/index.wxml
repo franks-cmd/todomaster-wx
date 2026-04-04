@@ -1,0 +1,66 @@
+<view class="page">
+  <!-- 页面头部 -->
+  <view class="index-header">
+    <view class="header-left">
+      <text class="title-xl">待办事项</text>
+      <text class="header-count">{{activeCount}} 项进行中</text>
+    </view>
+    <view class="header-right">
+      <view class="icon-btn" bindtap="goSearch">
+        <text class="icon-text">🔍</text>
+      </view>
+      <view class="icon-btn {{sortMode ? 'icon-btn--active' : ''}}" bindtap="toggleSortMode">
+        <text class="icon-text">↕️</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 筛选栏 -->
+  <filter-bar
+    categories="{{categories}}"
+    activeStatus="{{filterStatus}}"
+    activeCategoryId="{{filterCategoryId}}"
+    activePriority="{{filterPriority}}"
+    bind:filterChange="onFilterChange" />
+
+  <!-- 待办列表 -->
+  <view class="todo-list" wx:if="{{filteredTodos.length > 0}}">
+    <view class="todo-item-wrapper anim-fade-in"
+      wx:for="{{filteredTodos}}" wx:key="id"
+      style="animation-delay: {{index * 50}}ms;">
+      <todo-item
+        todo="{{item}}"
+        categoryName="{{item._categoryName}}"
+        categoryColor="{{item._categoryColor}}"
+        sortMode="{{sortMode}}"
+        bind:tap="onTodoTap"
+        bind:toggle="onTodoToggle"
+        bind:delete="onTodoDelete" />
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <empty-state wx:if="{{!loading && filteredTodos.length === 0}}"
+    type="{{hasAnyTodos ? 'no-results' : 'no-todos'}}" />
+
+  <!-- FAB -->
+  <view class="fab" bindtap="goAddTodo" wx:if="{{!sortMode}}">
+    <text class="fab-icon">+</text>
+  </view>
+
+  <!-- 排序模式提示 -->
+  <view class="sort-bar" wx:if="{{sortMode}}">
+    <text class="sort-tip">长按拖动调整顺序</text>
+    <view class="btn btn-sm btn-primary" bindtap="saveSortOrder">
+      <text>完成排序</text>
+    </view>
+  </view>
+
+  <!-- 提醒弹窗 -->
+  <reminder-modal
+    show="{{showReminder}}"
+    reminders="{{reminders}}"
+    bind:close="onReminderClose"
+    bind:markDone="onReminderDone"
+    bind:dismiss="onReminderDismiss" />
+</view>

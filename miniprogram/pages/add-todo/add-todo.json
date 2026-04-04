@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "新建待办",
+  "usingComponents": {
+    "priority-tag": "../../components/priority-tag/priority-tag"
+  }
+}

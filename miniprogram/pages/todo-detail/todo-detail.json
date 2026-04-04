@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "待办详情",
+  "usingComponents": {
+    "priority-tag": "../../components/priority-tag/priority-tag",
+    "category-badge": "../../components/category-badge/category-badge"
+  }
+}

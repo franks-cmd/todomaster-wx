@@ -1,0 +1,56 @@
+<view class="page page--no-tab" wx:if="{{todo}}">
+  <!-- 状态标签 -->
+  <view class="detail-status {{todo.completed ? 'status-done' : ''}}">
+    <text class="status-icon">{{todo.completed ? '✓' : '○'}}</text>
+    <text class="status-text">{{todo.completed ? '已完成' : '进行中'}}</text>
+  </view>
+
+  <!-- 标题 -->
+  <text class="detail-title {{todo.completed ? 'detail-title--done' : ''}}">{{todo.title}}</text>
+
+  <!-- 元信息 -->
+  <view class="detail-meta">
+    <view class="meta-item">
+      <text class="meta-label">优先级</text>
+      <priority-tag priority="{{todo.priority}}" />
+    </view>
+
+    <view class="meta-item" wx:if="{{categoryName}}">
+      <text class="meta-label">分类</text>
+      <category-badge name="{{categoryName}}" color="{{categoryColor}}" />
+    </view>
+
+    <view class="meta-item" wx:if="{{todo.dueDate}}">
+      <text class="meta-label">截止日期</text>
+      <text class="meta-value {{dueStatusClass}}">{{dueDisplayText}}</text>
+    </view>
+
+    <view class="meta-item">
+      <text class="meta-label">创建时间</text>
+      <text class="meta-value">{{createdText}}</text>
+    </view>
+  </view>
+
+  <!-- 描述 -->
+  <view class="detail-desc-section" wx:if="{{todo.description}}">
+    <text class="form-label">描述</text>
+    <view class="detail-desc card">
+      <text class="desc-text">{{todo.description}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="detail-actions">
+    <view class="btn {{todo.completed ? 'btn-secondary' : 'btn-copper'}}" bindtap="onToggle">
+      <text>{{todo.completed ? '标记为未完成' : '标记为已完成'}}</text>
+    </view>
+    <view class="btn-row">
+      <view class="btn btn-secondary" style="flex:1;" bindtap="onEdit">
+        <text>编辑</text>
+      </view>
+      <view class="btn btn-danger" style="flex:1;" bindtap="onDelete">
+        <text>删除</text>
+      </view>
+    </view>
+  </view>
+</view>

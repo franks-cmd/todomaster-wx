@@ -1,0 +1,33 @@
+.priority-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.priority-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+
+.priority-high {
+  background: rgba(217, 79, 79, 0.1);
+  color: #D94F4F;
+}
+.priority-high .priority-dot { background: #D94F4F; }
+
+.priority-medium {
+  background: rgba(224, 159, 62, 0.1);
+  color: #E09F3E;
+}
+.priority-medium .priority-dot { background: #E09F3E; }
+
+.priority-low {
+  background: rgba(91, 143, 185, 0.1);
+  color: #5B8FB9;
+}
+.priority-low .priority-dot { background: #5B8FB9; }

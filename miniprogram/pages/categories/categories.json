@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "分类管理",
+  "usingComponents": {
+    "color-picker": "../../components/color-picker/color-picker",
+    "empty-state": "../../components/empty-state/empty-state"
+  }
+}

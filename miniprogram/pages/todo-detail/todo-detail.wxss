@@ -1,0 +1,110 @@
+.detail-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 999rpx;
+  background: rgba(224, 159, 62, 0.12);
+  color: #E09F3E;
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-bottom: 24rpx;
+}
+
+.status-done {
+  background: rgba(122, 158, 126, 0.12);
+  color: #7A9E7E;
+}
+
+.status-icon {
+  font-size: 26rpx;
+}
+
+.detail-title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #1B2838;
+  line-height: 1.3;
+  margin-bottom: 32rpx;
+  letter-spacing: -0.5rpx;
+}
+
+.detail-title--done {
+  text-decoration: line-through;
+  color: #8EA3B2;
+}
+
+/* Meta */
+.detail-meta {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 8rpx 28rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 2rpx 8rpx rgba(27, 40, 56, 0.06);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #F2F0EB;
+}
+
+.meta-item:last-child {
+  border-bottom: none;
+}
+
+.meta-label {
+  font-size: 26rpx;
+  color: #5A7184;
+  font-weight: 500;
+}
+
+.meta-value {
+  font-size: 26rpx;
+  color: #1B2838;
+  font-weight: 500;
+}
+
+.meta-value.due-overdue {
+  color: #D94F4F;
+  font-weight: 600;
+}
+
+.meta-value.due-urgent {
+  color: #E09F3E;
+}
+
+/* Description */
+.detail-desc-section {
+  margin-bottom: 40rpx;
+}
+
+.detail-desc {
+  margin-top: 12rpx;
+}
+
+.desc-text {
+  font-size: 28rpx;
+  color: #2D4356;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Actions */
+.detail-actions {
+  margin-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.detail-actions .btn {
+  margin-bottom: 16rpx;
+}
+
+.btn-row {
+  display: flex;
+  gap: 16rpx;
+}

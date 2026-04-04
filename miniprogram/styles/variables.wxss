@@ -1,0 +1,99 @@
+/* ============================================
+   TodoMaster Design System
+   Aesthetic: Warm industrial — deep ink tones,
+   parchment backgrounds, copper accents
+   ============================================ */
+
+page {
+  /* === Primary Palette === */
+  --color-ink: #1B2838;
+  --color-ink-light: #2D4356;
+  --color-ink-muted: #5A7184;
+  --color-parchment: #F2F0EB;
+  --color-parchment-dark: #E8E4DD;
+  --color-white: #FFFFFF;
+
+  /* === Accent Colors === */
+  --color-copper: #C17F59;
+  --color-copper-light: #D4A574;
+  --color-copper-glow: rgba(193, 127, 89, 0.12);
+  --color-sage: #7A9E7E;
+  --color-sage-light: rgba(122, 158, 126, 0.15);
+
+  /* === Priority Colors === */
+  --color-priority-high: #D94F4F;
+  --color-priority-high-bg: rgba(217, 79, 79, 0.1);
+  --color-priority-medium: #E09F3E;
+  --color-priority-medium-bg: rgba(224, 159, 62, 0.1);
+  --color-priority-low: #5B8FB9;
+  --color-priority-low-bg: rgba(91, 143, 185, 0.1);
+
+  /* === Status Colors === */
+  --color-success: #7A9E7E;
+  --color-danger: #D94F4F;
+  --color-warning: #E09F3E;
+  --color-info: #5B8FB9;
+
+  /* === Text Colors === */
+  --text-primary: #1B2838;
+  --text-secondary: #5A7184;
+  --text-tertiary: #8EA3B2;
+  --text-inverse: #FFFFFF;
+  --text-disabled: #B8C4CC;
+
+  /* === Typography === */
+  --font-family: -apple-system, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-size-xs: 22rpx;
+  --font-size-sm: 24rpx;
+  --font-size-base: 28rpx;
+  --font-size-md: 30rpx;
+  --font-size-lg: 34rpx;
+  --font-size-xl: 40rpx;
+  --font-size-xxl: 48rpx;
+  --font-size-display: 56rpx;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* === Spacing === */
+  --space-xs: 8rpx;
+  --space-sm: 16rpx;
+  --space-md: 24rpx;
+  --space-lg: 32rpx;
+  --space-xl: 48rpx;
+  --space-xxl: 64rpx;
+
+  /* === Border Radius === */
+  --radius-sm: 8rpx;
+  --radius-md: 16rpx;
+  --radius-lg: 24rpx;
+  --radius-xl: 32rpx;
+  --radius-full: 999rpx;
+
+  /* === Shadows === */
+  --shadow-sm: 0 2rpx 8rpx rgba(27, 40, 56, 0.06);
+  --shadow-md: 0 4rpx 16rpx rgba(27, 40, 56, 0.08);
+  --shadow-lg: 0 8rpx 32rpx rgba(27, 40, 56, 0.12);
+  --shadow-xl: 0 16rpx 48rpx rgba(27, 40, 56, 0.16);
+
+  /* === Transitions === */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* === Layout === */
+  --page-padding: 32rpx;
+  --card-padding: 28rpx;
+  --tab-bar-height: 100rpx;
+
+  /* === Apply base styles === */
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  background-color: var(--color-parchment);
+  line-height: var(--line-height-normal);
+}

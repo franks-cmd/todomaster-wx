@@ -1,0 +1,10 @@
+<view class="color-picker">
+  <view class="color-grid">
+    <view class="color-item {{value === item ? 'color-item--selected' : ''}}"
+      wx:for="{{colors}}" wx:key="*this"
+      style="background: {{item}};"
+      bindtap="onSelect" data-color="{{item}}">
+      <text wx:if="{{value === item}}" class="color-check">✓</text>
+    </view>
+  </view>
+</view>

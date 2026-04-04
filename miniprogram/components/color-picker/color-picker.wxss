@@ -1,0 +1,32 @@
+.color-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.color-item {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms ease;
+  position: relative;
+}
+
+.color-item:active {
+  transform: scale(0.9);
+}
+
+.color-item--selected {
+  transform: scale(1.1);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+}
+
+.color-check {
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 700;
+  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.3);
+}

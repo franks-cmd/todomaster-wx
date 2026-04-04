@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "TodoMaster",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "todo-item": "../../components/todo-item/todo-item",
+    "filter-bar": "../../components/filter-bar/filter-bar",
+    "empty-state": "../../components/empty-state/empty-state",
+    "reminder-modal": "../../components/reminder-modal/reminder-modal"
+  }
+}

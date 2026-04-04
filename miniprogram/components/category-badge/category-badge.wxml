@@ -1,0 +1,6 @@
+<view class="category-badge {{size === 'small' ? 'category-badge--sm' : ''}}"
+  style="background: {{bgColor}}; color: {{color}};"
+  wx:if="{{name}}">
+  <text class="category-dot" style="background: {{color}};"></text>
+  <text class="category-name">{{name}}</text>
+</view>

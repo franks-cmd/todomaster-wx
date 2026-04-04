@@ -1,0 +1,78 @@
+.index-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+  padding-top: 16rpx;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-count {
+  display: block;
+  font-size: 26rpx;
+  color: #5A7184;
+  margin-top: 8rpx;
+}
+
+.header-right {
+  display: flex;
+  gap: 16rpx;
+}
+
+.icon-btn {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 16rpx;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2rpx 8rpx rgba(27, 40, 56, 0.06);
+  transition: all 200ms ease;
+}
+
+.icon-btn:active {
+  transform: scale(0.92);
+}
+
+.icon-btn--active {
+  background: #1B2838;
+}
+
+.icon-text {
+  font-size: 32rpx;
+}
+
+.todo-list {
+  position: relative;
+}
+
+.todo-item-wrapper {
+  position: relative;
+  opacity: 0;
+}
+
+/* Sort bar */
+.sort-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120rpx;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -4rpx 16rpx rgba(27, 40, 56, 0.08);
+  z-index: 100;
+}
+
+.sort-tip {
+  font-size: 26rpx;
+  color: #5A7184;
+}

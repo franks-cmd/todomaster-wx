@@ -1,0 +1,28 @@
+<view class="reminder-mask" wx:if="{{show && reminders.length > 0}}" bindtap="onClose">
+  <view class="reminder-sheet anim-slide-up" catchtap="noop">
+    <view class="sheet-header">
+      <text class="sheet-title">待办提醒</text>
+      <text class="sheet-close" bindtap="onClose">✕</text>
+    </view>
+
+    <scroll-view class="sheet-body" scroll-y>
+      <view class="reminder-item {{item.type === 'overdue' ? 'reminder-item--overdue' : ''}}"
+        wx:for="{{reminders}}" wx:key="index">
+        <view class="reminder-info">
+          <text class="reminder-type-tag {{item.type}}">
+            {{item.type === 'overdue' ? '已过期' : '即将到期'}}
+          </text>
+          <text class="reminder-msg">{{item.message}}</text>
+        </view>
+        <view class="reminder-actions">
+          <view class="action-btn action-done" bindtap="onMarkDone" data-index="{{index}}">
+            <text>完成</text>
+          </view>
+          <view class="action-btn action-dismiss" bindtap="onDismiss" data-index="{{index}}">
+            <text>忽略</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

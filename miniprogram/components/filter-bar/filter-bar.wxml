@@ -1,0 +1,54 @@
+<scroll-view class="filter-bar" scroll-x enable-flex>
+  <!-- 状态筛选 -->
+  <view class="filter-group">
+    <view class="filter-chip {{activeStatus === 'all' ? 'filter-chip--active' : ''}}"
+      bindtap="onStatusChange" data-status="all">
+      <text>全部</text>
+    </view>
+    <view class="filter-chip {{activeStatus === 'active' ? 'filter-chip--active' : ''}}"
+      bindtap="onStatusChange" data-status="active">
+      <text>进行中</text>
+    </view>
+    <view class="filter-chip {{activeStatus === 'completed' ? 'filter-chip--active' : ''}}"
+      bindtap="onStatusChange" data-status="completed">
+      <text>已完成</text>
+    </view>
+  </view>
+
+  <!-- 分隔线 -->
+  <view class="filter-divider"></view>
+
+  <!-- 分类筛选 -->
+  <view class="filter-chip {{!activeCategoryId ? 'filter-chip--active' : ''}}"
+    bindtap="onCategoryChange" data-id="">
+    <text>所有分类</text>
+  </view>
+  <view class="filter-chip {{activeCategoryId === item.id ? 'filter-chip--active' : ''}}"
+    wx:for="{{categories}}" wx:key="id"
+    bindtap="onCategoryChange" data-id="{{item.id}}">
+    <text class="cat-dot" style="background: {{item.color}};"></text>
+    <text>{{item.name}}</text>
+  </view>
+
+  <!-- 优先级筛选 -->
+  <view class="filter-divider"></view>
+  <view class="filter-chip {{!activePriority ? 'filter-chip--active' : ''}}"
+    bindtap="onPriorityChange" data-priority="">
+    <text>所有优先级</text>
+  </view>
+  <view class="filter-chip {{activePriority === 'high' ? 'filter-chip--active' : ''}}"
+    bindtap="onPriorityChange" data-priority="high">
+    <text class="cat-dot" style="background: #D94F4F;"></text>
+    <text>高</text>
+  </view>
+  <view class="filter-chip {{activePriority === 'medium' ? 'filter-chip--active' : ''}}"
+    bindtap="onPriorityChange" data-priority="medium">
+    <text class="cat-dot" style="background: #E09F3E;"></text>
+    <text>中</text>
+  </view>
+  <view class="filter-chip {{activePriority === 'low' ? 'filter-chip--active' : ''}}"
+    bindtap="onPriorityChange" data-priority="low">
+    <text class="cat-dot" style="background: #5B8FB9;"></text>
+    <text>低</text>
+  </view>
+</scroll-view>

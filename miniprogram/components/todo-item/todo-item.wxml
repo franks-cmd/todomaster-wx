@@ -1,0 +1,44 @@
+<view class="todo-item {{todo.completed ? 'todo-item--done' : ''}} {{dueStatusClass}}"
+  bindtap="onTap"
+  bindtouchstart="onTouchStart"
+  bindtouchmove="onTouchMove"
+  bindtouchend="onTouchEnd"
+  style="transform: translateX({{offsetX}}px);">
+
+  <!-- 勾选框 -->
+  <view class="todo-checkbox" catchtap="onToggle">
+    <view class="checkbox-inner {{todo.completed ? 'checkbox-inner--checked' : ''}}">
+      <text wx:if="{{todo.completed}}" class="check-icon">✓</text>
+    </view>
+  </view>
+
+  <!-- 内容区 -->
+  <view class="todo-content">
+    <view class="todo-header">
+      <text class="todo-title {{todo.completed ? 'todo-title--done' : ''}}">{{todo.title}}</text>
+    </view>
+
+    <view class="todo-meta">
+      <priority-tag wx:if="{{!todo.completed}}" priority="{{todo.priority}}" />
+      <category-badge
+        wx:if="{{categoryName}}"
+        name="{{categoryName}}"
+        color="{{categoryColor}}"
+        size="small" />
+      <view class="todo-due {{dueStatusClass}}" wx:if="{{todo.dueDate && !todo.completed}}">
+        <text class="due-icon">⏰</text>
+        <text class="due-text">{{dueText}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 排序手柄 -->
+  <view class="sort-handle" wx:if="{{sortMode}}" catchtap="noop">
+    <text class="handle-icon">☰</text>
+  </view>
+</view>
+
+<!-- 滑动删除按钮 -->
+<view class="swipe-delete {{showDelete ? 'swipe-delete--show' : ''}}" catchtap="onDelete">
+  <text class="delete-text">删除</text>
+</view>

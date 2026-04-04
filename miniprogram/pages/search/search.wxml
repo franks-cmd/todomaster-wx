@@ -1,0 +1,57 @@
+<view class="page page--no-tab">
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <text class="search-icon">🔍</text>
+    <input class="search-input"
+      placeholder="搜索待办事项..."
+      value="{{keyword}}"
+      bindinput="onKeywordInput"
+      focus="{{true}}"
+      confirm-type="search" />
+    <text class="search-clear" wx:if="{{keyword}}" bindtap="clearKeyword">✕</text>
+  </view>
+
+  <!-- 高级筛选 -->
+  <view class="filter-section">
+    <view class="filter-row">
+      <picker mode="selector" range="{{categoryOptions}}" range-key="name"
+        value="{{categoryIndex}}" bindchange="onCategoryFilter">
+        <view class="filter-pill">
+          <text>{{categoryOptions[categoryIndex].name}}</text>
+          <text class="pill-arrow">▾</text>
+        </view>
+      </picker>
+
+      <picker mode="selector" range="{{priorityOptions}}" range-key="label"
+        value="{{priorityIndex}}" bindchange="onPriorityFilter">
+        <view class="filter-pill">
+          <text>{{priorityOptions[priorityIndex].label}}</text>
+          <text class="pill-arrow">▾</text>
+        </view>
+      </picker>
+
+      <picker mode="selector" range="{{statusOptions}}" range-key="label"
+        value="{{statusIndex}}" bindchange="onStatusFilter">
+        <view class="filter-pill">
+          <text>{{statusOptions[statusIndex].label}}</text>
+          <text class="pill-arrow">▾</text>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view class="search-results" wx:if="{{results.length > 0}}">
+    <text class="result-count">找到 {{results.length}} 个结果</text>
+    <view wx:for="{{results}}" wx:key="id">
+      <todo-item
+        todo="{{item}}"
+        categoryName="{{item._categoryName}}"
+        categoryColor="{{item._categoryColor}}"
+        bind:tap="onTodoTap"
+        bind:toggle="onTodoToggle" />
+    </view>
+  </view>
+
+  <empty-state wx:if="{{searched && results.length === 0}}" type="no-results" />
+</view>

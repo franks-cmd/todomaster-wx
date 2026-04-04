@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "priority-tag": "../priority-tag/priority-tag",
+    "category-badge": "../category-badge/category-badge"
+  }
+}

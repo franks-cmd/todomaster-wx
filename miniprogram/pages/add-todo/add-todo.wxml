@@ -1,0 +1,96 @@
+<view class="page page--no-tab">
+  <!-- 标题 -->
+  <view class="form-section">
+    <text class="form-label">标题</text>
+    <input class="input-field {{titleFocus ? 'input-field--focus' : ''}}"
+      placeholder="输入待办标题"
+      value="{{title}}"
+      bindinput="onTitleInput"
+      bindfocus="onTitleFocus"
+      bindblur="onTitleBlur"
+      maxlength="100" />
+  </view>
+
+  <!-- 描述 -->
+  <view class="form-section">
+    <text class="form-label">描述</text>
+    <textarea class="textarea-field"
+      placeholder="添加详细描述（可选）"
+      value="{{description}}"
+      bindinput="onDescInput"
+      maxlength="2000"
+      auto-height />
+  </view>
+
+  <!-- 优先级 -->
+  <view class="form-section">
+    <text class="form-label">优先级</text>
+    <view class="priority-selector">
+      <view class="priority-option {{priority === 'high' ? 'priority-option--active priority-high-active' : ''}}"
+        bindtap="setPriority" data-p="high">
+        <text class="p-dot" style="background: #D94F4F;"></text>
+        <text>高</text>
+      </view>
+      <view class="priority-option {{priority === 'medium' ? 'priority-option--active priority-medium-active' : ''}}"
+        bindtap="setPriority" data-p="medium">
+        <text class="p-dot" style="background: #E09F3E;"></text>
+        <text>中</text>
+      </view>
+      <view class="priority-option {{priority === 'low' ? 'priority-option--active priority-low-active' : ''}}"
+        bindtap="setPriority" data-p="low">
+        <text class="p-dot" style="background: #5B8FB9;"></text>
+        <text>低</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类 -->
+  <view class="form-section">
+    <text class="form-label">分类</text>
+    <picker mode="selector"
+      range="{{categoryOptions}}"
+      range-key="name"
+      value="{{categoryIndex}}"
+      bindchange="onCategoryChange">
+      <view class="picker-field">
+        <view class="picker-value" wx:if="{{categoryIndex > 0}}">
+          <text class="picker-dot" style="background: {{categoryOptions[categoryIndex].color}};"></text>
+          <text>{{categoryOptions[categoryIndex].name}}</text>
+        </view>
+        <text class="picker-placeholder" wx:else>选择分类（可选）</text>
+        <text class="picker-arrow">›</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 截止日期 -->
+  <view class="form-section">
+    <text class="form-label">截止日期</text>
+    <view class="date-row">
+      <picker mode="date" value="{{dueDate}}" bindchange="onDateChange">
+        <view class="picker-field picker-field--half">
+          <text class="{{dueDate ? '' : 'picker-placeholder'}}">
+            {{dueDate || '选择日期'}}
+          </text>
+        </view>
+      </picker>
+      <picker mode="time" value="{{dueTime}}" bindchange="onTimeChange" wx:if="{{dueDate}}">
+        <view class="picker-field picker-field--half">
+          <text class="{{dueTime ? '' : 'picker-placeholder'}}">
+            {{dueTime || '选择时间'}}
+          </text>
+        </view>
+      </picker>
+      <view class="clear-date" wx:if="{{dueDate}}" bindtap="clearDate">
+        <text>✕</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="form-actions">
+    <view class="btn btn-primary" bindtap="onSave">
+      <text>{{isEdit ? '保存修改' : '创建待办'}}</text>
+    </view>
+  </view>
+</view>

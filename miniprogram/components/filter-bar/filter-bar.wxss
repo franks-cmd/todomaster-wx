@@ -1,0 +1,49 @@
+.filter-bar {
+  display: flex;
+  white-space: nowrap;
+  padding: 16rpx 0;
+  margin-bottom: 16rpx;
+}
+
+.filter-group {
+  display: inline-flex;
+  gap: 12rpx;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 12rpx 24rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #5A7184;
+  background: #FFFFFF;
+  border: 2rpx solid #E8E4DD;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+  transition: all 200ms ease;
+}
+
+.filter-chip--active {
+  background: #1B2838;
+  color: #FFFFFF;
+  border-color: #1B2838;
+}
+
+.filter-divider {
+  width: 2rpx;
+  height: 40rpx;
+  background: #E8E4DD;
+  margin: 6rpx 16rpx 6rpx 4rpx;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.cat-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+  flex-shrink: 0;
+}

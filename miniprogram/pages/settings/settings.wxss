@@ -1,0 +1,120 @@
+.settings-title {
+  margin-bottom: 32rpx;
+  padding-top: 16rpx;
+  display: block;
+}
+
+.settings-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #8EA3B2;
+  text-transform: uppercase;
+  letter-spacing: 2rpx;
+  margin-bottom: 16rpx;
+  padding-left: 8rpx;
+}
+
+/* Storage options */
+.storage-option {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  transition: background 200ms ease;
+}
+
+.storage-option--active {
+  background: rgba(193, 127, 89, 0.04);
+}
+
+.option-radio {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 3rpx solid #C8D1D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  transition: border-color 200ms ease;
+}
+
+.option-radio--selected {
+  border-color: #C17F59;
+}
+
+.radio-dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #C17F59;
+}
+
+.option-info {
+  flex: 1;
+}
+
+.option-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1B2838;
+  margin-bottom: 4rpx;
+}
+
+.option-desc {
+  font-size: 24rpx;
+  color: #8EA3B2;
+}
+
+.option-divider {
+  height: 2rpx;
+  background: #F2F0EB;
+  margin: 0 24rpx;
+}
+
+/* Settings row */
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx;
+  min-height: 88rpx;
+}
+
+.row-left {
+  flex: 1;
+}
+
+.row-title {
+  font-size: 30rpx;
+  color: #1B2838;
+  font-weight: 500;
+}
+
+.row-title--danger {
+  color: #D94F4F;
+}
+
+.row-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #8EA3B2;
+  margin-top: 4rpx;
+}
+
+.row-value {
+  font-size: 28rpx;
+  color: #8EA3B2;
+}
+
+.row-arrow {
+  font-size: 32rpx;
+  color: #C8D1D9;
+  margin-left: 12rpx;
+}

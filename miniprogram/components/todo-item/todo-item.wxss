@@ -1,0 +1,147 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 28rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(27, 40, 56, 0.06);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  position: relative;
+  z-index: 1;
+}
+
+.todo-item:active {
+  box-shadow: 0 4rpx 16rpx rgba(27, 40, 56, 0.08);
+}
+
+.todo-item--done {
+  opacity: 0.6;
+}
+
+/* Checkbox */
+.todo-checkbox {
+  flex-shrink: 0;
+  margin-right: 20rpx;
+  padding: 8rpx;
+}
+
+.checkbox-inner {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 12rpx;
+  border: 3rpx solid #C8D1D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease;
+}
+
+.checkbox-inner--checked {
+  background: #7A9E7E;
+  border-color: #7A9E7E;
+}
+
+.check-icon {
+  color: #FFFFFF;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+/* Content */
+.todo-content {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.todo-header {
+  margin-bottom: 8rpx;
+}
+
+.todo-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #1B2838;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.todo-title--done {
+  text-decoration: line-through;
+  color: #8EA3B2;
+}
+
+/* Meta */
+.todo-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.todo-due {
+  display: inline-flex;
+  align-items: center;
+  font-size: 22rpx;
+  color: #5A7184;
+}
+
+.todo-due.due-overdue {
+  color: #D94F4F;
+}
+
+.todo-due.due-urgent {
+  color: #E09F3E;
+}
+
+.due-icon {
+  font-size: 20rpx;
+  margin-right: 4rpx;
+}
+
+.due-text {
+  white-space: nowrap;
+}
+
+/* Sort handle */
+.sort-handle {
+  flex-shrink: 0;
+  padding: 16rpx;
+  margin-left: 8rpx;
+}
+
+.handle-icon {
+  font-size: 32rpx;
+  color: #B8C4CC;
+}
+
+/* Swipe delete */
+.swipe-delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 16rpx;
+  width: 160rpx;
+  background: #D94F4F;
+  border-radius: 0 16rpx 16rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.swipe-delete--show {
+  opacity: 1;
+}
+
+.delete-text {
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: 500;
+}

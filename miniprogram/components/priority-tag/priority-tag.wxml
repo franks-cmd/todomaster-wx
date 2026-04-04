@@ -1,0 +1,4 @@
+<view class="priority-tag priority-{{priority}}" wx:if="{{priority}}">
+  <text class="priority-dot"></text>
+  <text class="priority-label">{{label}}</text>
+</view>
