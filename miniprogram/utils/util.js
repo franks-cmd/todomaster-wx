@@ -113,7 +113,7 @@ function showConfirm(content, title = '提示') {
       content,
       confirmText: '确定',
       cancelText: '取消',
-      confirmColor: '#1B2838',
+      confirmColor: '#C4572A',
       success: (res) => resolve(res.confirm)
     })
   })

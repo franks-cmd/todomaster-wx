@@ -1,24 +1,21 @@
+/* === Category Badge — Left Border Tab === */
 .category-badge {
   display: inline-flex;
   align-items: center;
-  padding: 4rpx 16rpx;
-  border-radius: 999rpx;
-  font-size: 22rpx;
-  font-weight: 500;
+  padding: 4rpx 12rpx;
+  padding-left: 14rpx;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
   max-width: 200rpx;
+  border-left-width: 4rpx;
+  border-left-style: solid;
 }
 
 .category-badge--sm {
-  padding: 2rpx 12rpx;
+  padding: 2rpx 10rpx;
+  padding-left: 12rpx;
   font-size: 20rpx;
-}
-
-.category-dot {
-  width: 12rpx;
-  height: 12rpx;
-  border-radius: 50%;
-  margin-right: 8rpx;
-  flex-shrink: 0;
 }
 
 .category-name {

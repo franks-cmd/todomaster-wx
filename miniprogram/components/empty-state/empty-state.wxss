@@ -1,33 +1,106 @@
+/* === Empty State — Geometric Shapes === */
 .empty-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80rpx 48rpx;
+  padding: 100rpx var(--space-xl) 80rpx;
 }
 
-.empty-icon {
-  font-size: 120rpx;
-  margin-bottom: 32rpx;
-  opacity: 0.25;
+/* CSS geometric icon — ruled notebook */
+.empty-graphic {
+  width: 120rpx;
+  height: 140rpx;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  opacity: 0.18;
 }
 
-.empty-text {
-  font-size: 30rpx;
-  color: #8EA3B2;
+/* Notebook lines */
+.graphic-notebook {
+  width: 100%;
+  height: 100%;
+  border: 3rpx solid var(--text-primary);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.graphic-notebook::before {
+  content: '';
+  position: absolute;
+  top: 30rpx;
+  left: 16rpx;
+  right: 16rpx;
+  height: 2rpx;
+  background: var(--text-primary);
+  box-shadow:
+    0 24rpx 0 var(--text-primary),
+    0 48rpx 0 var(--text-primary),
+    0 72rpx 0 var(--text-primary);
+}
+
+/* Circle */
+.graphic-circle {
+  width: 100rpx;
+  height: 100rpx;
+  border: 3rpx solid var(--text-primary);
+  border-radius: var(--radius-full);
+  margin: 0 auto;
+}
+
+/* Search lens */
+.graphic-search {
+  width: 80rpx;
+  height: 80rpx;
+  border: 3rpx solid var(--text-primary);
+  border-radius: var(--radius-full);
+  position: relative;
+  margin: 0 auto;
+}
+
+.graphic-search::after {
+  content: '';
+  position: absolute;
+  bottom: -24rpx;
+  right: -12rpx;
+  width: 3rpx;
+  height: 36rpx;
+  background: var(--text-primary);
+  transform: rotate(-45deg);
+}
+
+.empty-title {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
   text-align: center;
-  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.empty-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  text-align: center;
+  line-height: var(--line-height-relaxed);
 }
 
 .empty-action {
-  margin-top: 32rpx;
-  padding: 16rpx 40rpx;
-  background: #1B2838;
-  border-radius: 999rpx;
+  margin-top: var(--space-lg);
+  padding: 14rpx 40rpx;
+  background: transparent;
+  border: 1rpx solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.empty-action:active {
+  border-color: var(--color-sienna);
 }
 
 .action-text {
-  color: #FFFFFF;
-  font-size: 28rpx;
-  font-weight: 500;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }

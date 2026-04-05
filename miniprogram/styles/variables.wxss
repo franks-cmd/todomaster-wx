@@ -1,48 +1,49 @@
 /* ============================================
-   TodoMaster Design System
-   Aesthetic: Warm industrial — deep ink tones,
-   parchment backgrounds, copper accents
+   TodoMaster Design System — "Analog Planner"
+   Inspired by premium stationery, bullet journals,
+   and vintage planners with digital precision.
    ============================================ */
 
 page {
   /* === Primary Palette === */
-  --color-ink: #1B2838;
-  --color-ink-light: #2D4356;
-  --color-ink-muted: #5A7184;
-  --color-parchment: #F2F0EB;
-  --color-parchment-dark: #E8E4DD;
+  --color-walnut: #2A1F14;
+  --color-walnut-light: #4A3B2E;
+  --color-warm-gray: #8C7E72;
+  --color-ivory: #FAF8F4;
+  --color-ivory-dark: #F3EFE8;
   --color-white: #FFFFFF;
 
   /* === Accent Colors === */
-  --color-copper: #C17F59;
-  --color-copper-light: #D4A574;
-  --color-copper-glow: rgba(193, 127, 89, 0.12);
-  --color-sage: #7A9E7E;
-  --color-sage-light: rgba(122, 158, 126, 0.15);
+  --color-sienna: #C4572A;
+  --color-sienna-light: #D4714A;
+  --color-sienna-glow: rgba(196, 87, 42, 0.10);
+  --color-moss: #4A7C59;
+  --color-moss-light: rgba(74, 124, 89, 0.12);
 
   /* === Priority Colors === */
-  --color-priority-high: #D94F4F;
-  --color-priority-high-bg: rgba(217, 79, 79, 0.1);
-  --color-priority-medium: #E09F3E;
-  --color-priority-medium-bg: rgba(224, 159, 62, 0.1);
-  --color-priority-low: #5B8FB9;
-  --color-priority-low-bg: rgba(91, 143, 185, 0.1);
+  --color-priority-high: #C4572A;
+  --color-priority-high-bg: rgba(196, 87, 42, 0.08);
+  --color-priority-medium: #D4943A;
+  --color-priority-medium-bg: rgba(212, 148, 58, 0.08);
+  --color-priority-low: #6B8FAD;
+  --color-priority-low-bg: rgba(107, 143, 173, 0.08);
 
   /* === Status Colors === */
-  --color-success: #7A9E7E;
-  --color-danger: #D94F4F;
-  --color-warning: #E09F3E;
-  --color-info: #5B8FB9;
+  --color-success: #4A7C59;
+  --color-danger: #C4572A;
+  --color-warning: #D4943A;
+  --color-info: #6B8FAD;
 
   /* === Text Colors === */
-  --text-primary: #1B2838;
-  --text-secondary: #5A7184;
-  --text-tertiary: #8EA3B2;
+  --text-primary: #2A1F14;
+  --text-secondary: #8C7E72;
+  --text-tertiary: #B5A99B;
   --text-inverse: #FFFFFF;
-  --text-disabled: #B8C4CC;
+  --text-disabled: #C9BFB3;
 
   /* === Typography === */
   --font-family: -apple-system, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-family-serif: Georgia, "Noto Serif SC", "Songti SC", "STSong", serif;
   --font-size-xs: 22rpx;
   --font-size-sm: 24rpx;
   --font-size-base: 28rpx;
@@ -50,7 +51,7 @@ page {
   --font-size-lg: 34rpx;
   --font-size-xl: 40rpx;
   --font-size-xxl: 48rpx;
-  --font-size-display: 56rpx;
+  --font-size-display: 60rpx;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -58,6 +59,8 @@ page {
   --line-height-tight: 1.2;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
+  --letter-spacing-label: 4rpx;
+  --letter-spacing-tight: -1rpx;
 
   /* === Spacing === */
   --space-xs: 8rpx;
@@ -67,23 +70,28 @@ page {
   --space-xl: 48rpx;
   --space-xxl: 64rpx;
 
+  /* === Border === */
+  --color-border: #E8E2D9;
+  --border-thin: 1rpx solid #E8E2D9;
+
   /* === Border Radius === */
-  --radius-sm: 8rpx;
-  --radius-md: 16rpx;
-  --radius-lg: 24rpx;
-  --radius-xl: 32rpx;
+  --radius-sm: 6rpx;
+  --radius-md: 12rpx;
+  --radius-lg: 16rpx;
+  --radius-xl: 24rpx;
   --radius-full: 999rpx;
 
-  /* === Shadows === */
-  --shadow-sm: 0 2rpx 8rpx rgba(27, 40, 56, 0.06);
-  --shadow-md: 0 4rpx 16rpx rgba(27, 40, 56, 0.08);
-  --shadow-lg: 0 8rpx 32rpx rgba(27, 40, 56, 0.12);
-  --shadow-xl: 0 16rpx 48rpx rgba(27, 40, 56, 0.16);
+  /* === Shadows (minimal — prefer borders) === */
+  --shadow-sm: none;
+  --shadow-md: 0 2rpx 8rpx rgba(42, 31, 20, 0.04);
+  --shadow-lg: 0 4rpx 16rpx rgba(42, 31, 20, 0.06);
+  --shadow-xl: 0 8rpx 24rpx rgba(42, 31, 20, 0.10);
 
   /* === Transitions === */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* === Layout === */
   --page-padding: 32rpx;
@@ -94,6 +102,11 @@ page {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   color: var(--text-primary);
-  background-color: var(--color-parchment);
+  background-color: var(--color-ivory);
   line-height: var(--line-height-normal);
+  /* Paper grain texture */
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(42, 31, 20, 0.012) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(42, 31, 20, 0.008) 1px, transparent 1px);
+  background-size: 24px 24px;
 }

@@ -104,17 +104,17 @@ function crc32(buf) {
 
 const SIZE = 81;
 
-// Colors
-const GRAY = { r: 0x8A, g: 0x8A, b: 0x8A };
-const DARK = { r: 0x1B, g: 0x28, b: 0x38 };
+// Colors — Analog Planner palette
+const WARM_GRAY = { r: 0xB5, g: 0xA9, b: 0x9B };  // --text-tertiary
+const SIENNA = { r: 0xC4, g: 0x57, b: 0x2A };      // --color-sienna (active)
 
 const icons = [
-  { name: 'tab-todo.png',            color: GRAY },
-  { name: 'tab-todo-active.png',     color: DARK },
-  { name: 'tab-category.png',        color: GRAY },
-  { name: 'tab-category-active.png', color: DARK },
-  { name: 'tab-settings.png',        color: GRAY },
-  { name: 'tab-settings-active.png', color: DARK },
+  { name: 'tab-todo.png',            color: WARM_GRAY },
+  { name: 'tab-todo-active.png',     color: SIENNA },
+  { name: 'tab-category.png',        color: WARM_GRAY },
+  { name: 'tab-category-active.png', color: SIENNA },
+  { name: 'tab-settings.png',        color: WARM_GRAY },
+  { name: 'tab-settings-active.png', color: SIENNA },
 ];
 
 console.log(`Generating ${icons.length} placeholder icons (${SIZE}x${SIZE}) ...`);

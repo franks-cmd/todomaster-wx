@@ -1,11 +1,12 @@
+/* === Add Todo — Analog Planner === */
 .form-section {
-  margin-bottom: 40rpx;
+  margin-bottom: var(--space-xl);
 }
 
-/* Priority selector */
+/* Priority selector — bordered outlines */
 .priority-selector {
   display: flex;
-  gap: 16rpx;
+  gap: var(--space-sm);
 }
 
 .priority-option {
@@ -13,15 +14,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12rpx;
+  gap: 10rpx;
   height: 80rpx;
-  border-radius: 16rpx;
-  background: #FFFFFF;
-  border: 2rpx solid #E8E4DD;
-  font-size: 28rpx;
-  font-weight: 500;
-  color: #5A7184;
-  transition: all 200ms ease;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1rpx solid var(--color-border);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
 }
 
 .priority-option:active {
@@ -29,36 +30,44 @@
 }
 
 .priority-option--active {
-  border-color: transparent;
-  color: #FFFFFF;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.12);
+  color: var(--text-inverse);
 }
 
-.priority-high-active { background: #D94F4F; }
-.priority-medium-active { background: #E09F3E; }
-.priority-low-active { background: #5B8FB9; }
-
-.p-dot {
-  width: 14rpx;
-  height: 14rpx;
-  border-radius: 50%;
+.priority-high-active {
+  background: var(--color-priority-high);
+  border-color: var(--color-priority-high);
+}
+.priority-medium-active {
+  background: var(--color-priority-medium);
+  border-color: var(--color-priority-medium);
+}
+.priority-low-active {
+  background: var(--color-priority-low);
+  border-color: var(--color-priority-low);
 }
 
-.priority-option--active .p-dot {
+.p-bar {
+  width: 6rpx;
+  height: 20rpx;
+  border-radius: 3rpx;
+}
+
+.priority-option--active .p-bar {
   background: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Picker field */
+/* Picker field — bottom border style */
 .picker-field {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 88rpx;
-  padding: 0 24rpx;
-  background: #F2F0EB;
-  border-radius: 16rpx;
-  font-size: 28rpx;
-  color: #1B2838;
+  padding: 0 4rpx;
+  background: transparent;
+  border-bottom: 1rpx solid var(--color-border);
+  border-radius: 0;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
 }
 
 .picker-field--half {
@@ -72,25 +81,25 @@
 }
 
 .picker-dot {
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: var(--radius-full);
 }
 
 .picker-placeholder {
-  color: #B8C4CC;
+  color: var(--text-disabled);
 }
 
 .picker-arrow {
-  font-size: 36rpx;
-  color: #B8C4CC;
+  font-size: 28rpx;
+  color: var(--text-tertiary);
   font-weight: 300;
 }
 
 /* Date row */
 .date-row {
   display: flex;
-  gap: 16rpx;
+  gap: var(--space-sm);
   align-items: center;
 }
 
@@ -100,13 +109,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #8EA3B2;
-  font-size: 28rpx;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-base);
   flex-shrink: 0;
 }
 
 /* Actions */
 .form-actions {
-  margin-top: 60rpx;
-  padding-bottom: 40rpx;
+  margin-top: var(--space-xxl);
+  padding-bottom: var(--space-xl);
 }

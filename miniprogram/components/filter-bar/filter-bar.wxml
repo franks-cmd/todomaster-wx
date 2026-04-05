@@ -38,17 +38,17 @@
   </view>
   <view class="filter-chip {{activePriority === 'high' ? 'filter-chip--active' : ''}}"
     bindtap="onPriorityChange" data-priority="high">
-    <text class="cat-dot" style="background: #D94F4F;"></text>
+    <text class="priority-bar-inline" style="background: #C4572A;"></text>
     <text>高</text>
   </view>
   <view class="filter-chip {{activePriority === 'medium' ? 'filter-chip--active' : ''}}"
     bindtap="onPriorityChange" data-priority="medium">
-    <text class="cat-dot" style="background: #E09F3E;"></text>
+    <text class="priority-bar-inline" style="background: #D4943A;"></text>
     <text>中</text>
   </view>
   <view class="filter-chip {{activePriority === 'low' ? 'filter-chip--active' : ''}}"
     bindtap="onPriorityChange" data-priority="low">
-    <text class="cat-dot" style="background: #5B8FB9;"></text>
+    <text class="priority-bar-inline" style="background: #6B8FAD;"></text>
     <text>低</text>
   </view>
 </scroll-view>

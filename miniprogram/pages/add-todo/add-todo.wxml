@@ -28,17 +28,17 @@
     <view class="priority-selector">
       <view class="priority-option {{priority === 'high' ? 'priority-option--active priority-high-active' : ''}}"
         bindtap="setPriority" data-p="high">
-        <text class="p-dot" style="background: #D94F4F;"></text>
+        <text class="p-bar" style="background: #C4572A;"></text>
         <text>高</text>
       </view>
       <view class="priority-option {{priority === 'medium' ? 'priority-option--active priority-medium-active' : ''}}"
         bindtap="setPriority" data-p="medium">
-        <text class="p-dot" style="background: #E09F3E;"></text>
+        <text class="p-bar" style="background: #D4943A;"></text>
         <text>中</text>
       </view>
       <view class="priority-option {{priority === 'low' ? 'priority-option--active priority-low-active' : ''}}"
         bindtap="setPriority" data-p="low">
-        <text class="p-dot" style="background: #5B8FB9;"></text>
+        <text class="p-bar" style="background: #6B8FAD;"></text>
         <text>低</text>
       </view>
     </view>
@@ -82,7 +82,7 @@
         </view>
       </picker>
       <view class="clear-date" wx:if="{{dueDate}}" bindtap="clearDate">
-        <text>✕</text>
+        <text>×</text>
       </view>
     </view>
   </view>

@@ -26,7 +26,7 @@ Page({
         content: '是否将本地数据迁移到云端？',
         confirmText: '迁移',
         cancelText: '不迁移',
-        confirmColor: '#1B2838',
+        confirmColor: '#C4572A',
         success: (res) => {
           if (res.confirm) {
             // 迁移数据
@@ -58,7 +58,7 @@ Page({
         content: '是否将云端数据下载到本地？云端数据不会被删除。',
         confirmText: '下载',
         cancelText: '不下载',
-        confirmColor: '#1B2838',
+        confirmColor: '#C4572A',
         success: (res) => {
           if (res.confirm) {
             wx.showLoading({ title: '下载中...' })

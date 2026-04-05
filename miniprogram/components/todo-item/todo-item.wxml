@@ -5,7 +5,7 @@
   bindtouchend="onTouchEnd"
   style="transform: translateX({{offsetX}}px);">
 
-  <!-- 勾选框 -->
+  <!-- 勾选框 — Bullet Journal Circle -->
   <view class="todo-checkbox" catchtap="onToggle">
     <view class="checkbox-inner {{todo.completed ? 'checkbox-inner--checked' : ''}}">
       <text wx:if="{{todo.completed}}" class="check-icon">✓</text>
@@ -26,7 +26,6 @@
         color="{{categoryColor}}"
         size="small" />
       <view class="todo-due {{dueStatusClass}}" wx:if="{{todo.dueDate && !todo.completed}}">
-        <text class="due-icon">⏰</text>
         <text class="due-text">{{dueText}}</text>
       </view>
     </view>

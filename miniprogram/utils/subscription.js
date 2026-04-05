@@ -54,7 +54,7 @@ function showSubscriptionGuide() {
       content: '开启后，待办事项到期时会通过微信消息提醒你。建议在弹窗中勾选"总是保持以上选择"，这样以后所有待办都能自动提醒。',
       confirmText: '开启',
       cancelText: '暂不',
-      confirmColor: '#1B2838',
+      confirmColor: '#C4572A',
       success(res) {
         if (res.confirm) {
           requestSubscription().then(resolve)

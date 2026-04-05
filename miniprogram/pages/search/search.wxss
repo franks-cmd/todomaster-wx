@@ -1,65 +1,73 @@
+/* === Search — Analog Planner === */
 .search-bar {
   display: flex;
   align-items: center;
-  background: #FFFFFF;
-  border-radius: 16rpx;
-  padding: 0 24rpx;
+  background: transparent;
+  border-bottom: 2rpx solid var(--color-border);
+  padding: 0;
   height: 88rpx;
-  box-shadow: 0 2rpx 8rpx rgba(27, 40, 56, 0.06);
-  margin-bottom: 24rpx;
+  margin-bottom: var(--space-md);
+  transition: border-color var(--transition-fast);
+}
+
+.search-bar--focus {
+  border-bottom-color: var(--color-sienna);
 }
 
 .search-icon {
-  font-size: 28rpx;
-  margin-right: 16rpx;
+  font-size: var(--font-size-base);
+  color: var(--text-tertiary);
+  margin-right: var(--space-sm);
   flex-shrink: 0;
 }
 
 .search-input {
   flex: 1;
   height: 88rpx;
-  font-size: 28rpx;
-  color: #1B2838;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
 }
 
 .search-clear {
-  font-size: 28rpx;
-  color: #8EA3B2;
-  padding: 16rpx;
+  font-size: var(--font-size-base);
+  color: var(--text-tertiary);
+  padding: var(--space-sm);
   flex-shrink: 0;
 }
 
-/* Filters */
+/* Filters — outlined minimal pills */
 .filter-section {
-  margin-bottom: 24rpx;
+  margin-bottom: var(--space-md);
 }
 
 .filter-row {
   display: flex;
-  gap: 12rpx;
+  gap: var(--space-sm);
 }
 
 .filter-pill {
   display: flex;
   align-items: center;
-  gap: 8rpx;
-  padding: 12rpx 20rpx;
-  background: #FFFFFF;
-  border-radius: 999rpx;
-  font-size: 24rpx;
-  color: #5A7184;
-  border: 2rpx solid #E8E4DD;
+  gap: 6rpx;
+  padding: 10rpx 20rpx;
+  background: transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  border: 1rpx solid var(--color-border);
 }
 
 .pill-arrow {
   font-size: 18rpx;
-  color: #B8C4CC;
+  color: var(--text-tertiary);
 }
 
 /* Results */
 .result-count {
   display: block;
-  font-size: 24rpx;
-  color: #8EA3B2;
-  margin-bottom: 16rpx;
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 2rpx;
 }

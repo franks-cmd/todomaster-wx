@@ -1,58 +1,59 @@
+/* === Settings — Analog Planner === */
 .settings-title {
-  margin-bottom: 32rpx;
-  padding-top: 16rpx;
+  margin-bottom: var(--space-lg);
+  padding-top: var(--space-sm);
   display: block;
 }
 
 .settings-section {
-  margin-bottom: 40rpx;
+  margin-bottom: var(--space-xl);
 }
 
 .section-title {
   display: block;
-  font-size: 24rpx;
-  font-weight: 600;
-  color: #8EA3B2;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 2rpx;
-  margin-bottom: 16rpx;
+  letter-spacing: var(--letter-spacing-label);
+  margin-bottom: var(--space-sm);
   padding-left: 8rpx;
 }
 
-/* Storage options */
+/* Storage options — sienna radio */
 .storage-option {
   display: flex;
   align-items: center;
-  padding: 24rpx;
-  transition: background 200ms ease;
+  padding: var(--space-md);
+  transition: background var(--transition-fast);
 }
 
 .storage-option--active {
-  background: rgba(193, 127, 89, 0.04);
+  background: var(--color-sienna-glow);
 }
 
 .option-radio {
   width: 40rpx;
   height: 40rpx;
-  border-radius: 50%;
-  border: 3rpx solid #C8D1D9;
+  border-radius: var(--radius-full);
+  border: 2rpx solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20rpx;
   flex-shrink: 0;
-  transition: border-color 200ms ease;
+  transition: border-color var(--transition-fast);
 }
 
 .option-radio--selected {
-  border-color: #C17F59;
+  border-color: var(--color-sienna);
 }
 
 .radio-dot {
   width: 20rpx;
   height: 20rpx;
-  border-radius: 50%;
-  background: #C17F59;
+  border-radius: var(--radius-full);
+  background: var(--color-sienna);
 }
 
 .option-info {
@@ -61,21 +62,21 @@
 
 .option-title {
   display: block;
-  font-size: 30rpx;
-  font-weight: 600;
-  color: #1B2838;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
   margin-bottom: 4rpx;
 }
 
 .option-desc {
-  font-size: 24rpx;
-  color: #8EA3B2;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
 }
 
 .option-divider {
-  height: 2rpx;
-  background: #F2F0EB;
-  margin: 0 24rpx;
+  height: 1rpx;
+  background: var(--color-border);
+  margin: 0 var(--space-md);
 }
 
 /* Settings row */
@@ -83,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24rpx;
+  padding: var(--space-md);
   min-height: 88rpx;
 }
 
@@ -92,29 +93,29 @@
 }
 
 .row-title {
-  font-size: 30rpx;
-  color: #1B2838;
-  font-weight: 500;
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
 }
 
 .row-title--danger {
-  color: #D94F4F;
+  color: var(--color-danger);
 }
 
 .row-desc {
   display: block;
-  font-size: 24rpx;
-  color: #8EA3B2;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
   margin-top: 4rpx;
 }
 
 .row-value {
-  font-size: 28rpx;
-  color: #8EA3B2;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
 }
 
 .row-arrow {
-  font-size: 32rpx;
-  color: #C8D1D9;
-  margin-left: 12rpx;
+  font-size: 28rpx;
+  color: var(--text-tertiary);
+  margin-left: var(--space-sm);
 }

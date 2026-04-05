@@ -1,25 +1,27 @@
+/* === Todo Item — Analog Planner === */
 .todo-item {
   display: flex;
   align-items: center;
-  padding: 24rpx 28rpx;
-  background: #FFFFFF;
-  border-radius: 16rpx;
-  margin-bottom: 16rpx;
-  box-shadow: 0 2rpx 8rpx rgba(27, 40, 56, 0.06);
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  padding: 24rpx var(--card-padding);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-sm);
+  border: 1rpx solid var(--color-border);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
   position: relative;
   z-index: 1;
 }
 
 .todo-item:active {
-  box-shadow: 0 4rpx 16rpx rgba(27, 40, 56, 0.08);
+  transform: translateY(-2rpx);
+  border-color: var(--color-warm-gray);
 }
 
 .todo-item--done {
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
-/* Checkbox */
+/* === Checkbox — Bullet Journal Circle === */
 .todo-checkbox {
   flex-shrink: 0;
   margin-right: 20rpx;
@@ -29,26 +31,33 @@
 .checkbox-inner {
   width: 44rpx;
   height: 44rpx;
-  border-radius: 12rpx;
-  border: 3rpx solid #C8D1D9;
+  border-radius: var(--radius-full);
+  border: 2rpx solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 200ms ease;
+  transition: all var(--transition-spring);
 }
 
 .checkbox-inner--checked {
-  background: #7A9E7E;
-  border-color: #7A9E7E;
+  background: var(--color-moss);
+  border-color: var(--color-moss);
+  animation: checkBounce 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
 .check-icon {
-  color: #FFFFFF;
-  font-size: 26rpx;
+  color: var(--text-inverse);
+  font-size: 24rpx;
   font-weight: 700;
 }
 
-/* Content */
+/* === Content === */
 .todo-content {
   flex: 1;
   min-width: 0;
@@ -60,9 +69,9 @@
 }
 
 .todo-title {
-  font-size: 30rpx;
-  font-weight: 500;
-  color: #1B2838;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -72,10 +81,10 @@
 
 .todo-title--done {
   text-decoration: line-through;
-  color: #8EA3B2;
+  color: var(--text-tertiary);
 }
 
-/* Meta */
+/* === Meta === */
 .todo-meta {
   display: flex;
   align-items: center;
@@ -86,16 +95,16 @@
 .todo-due {
   display: inline-flex;
   align-items: center;
-  font-size: 22rpx;
-  color: #5A7184;
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
 }
 
 .todo-due.due-overdue {
-  color: #D94F4F;
+  color: var(--color-danger);
 }
 
 .todo-due.due-urgent {
-  color: #E09F3E;
+  color: var(--color-warning);
 }
 
 .due-icon {
@@ -107,7 +116,7 @@
   white-space: nowrap;
 }
 
-/* Sort handle */
+/* === Sort Handle === */
 .sort-handle {
   flex-shrink: 0;
   padding: 16rpx;
@@ -116,24 +125,24 @@
 
 .handle-icon {
   font-size: 32rpx;
-  color: #B8C4CC;
+  color: var(--text-tertiary);
 }
 
-/* Swipe delete */
+/* === Swipe Delete === */
 .swipe-delete {
   position: absolute;
   right: 0;
   top: 0;
-  bottom: 16rpx;
+  bottom: var(--space-sm);
   width: 160rpx;
-  background: #D94F4F;
-  border-radius: 0 16rpx 16rpx 0;
+  background: var(--color-sienna);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 0;
   opacity: 0;
-  transition: opacity 200ms ease;
+  transition: opacity var(--transition-fast);
 }
 
 .swipe-delete--show {
@@ -141,7 +150,7 @@
 }
 
 .delete-text {
-  color: #FFFFFF;
-  font-size: 28rpx;
-  font-weight: 500;
+  color: var(--text-inverse);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
 }

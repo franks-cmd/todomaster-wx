@@ -1,14 +1,14 @@
 <view class="page page--no-tab">
-  <!-- 搜索框 -->
+  <!-- 搜索框 — notebook underline style -->
   <view class="search-bar">
-    <text class="search-icon">🔍</text>
+    <text class="search-icon">&#x2315;</text>
     <input class="search-input"
       placeholder="搜索待办事项..."
       value="{{keyword}}"
       bindinput="onKeywordInput"
       focus="{{true}}"
       confirm-type="search" />
-    <text class="search-clear" wx:if="{{keyword}}" bindtap="clearKeyword">✕</text>
+    <text class="search-clear" wx:if="{{keyword}}" bindtap="clearKeyword">×</text>
   </view>
 
   <!-- 高级筛选 -->
