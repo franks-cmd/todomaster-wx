@@ -1,11 +1,13 @@
 /**
- * Generate minimal valid PNG placeholder icons for WeChat Mini Program TabBar.
- * Each file is an 81x81 single-color PNG.
+ * Generate TabBar icons with proper shapes for TodoMaster.
+ * Each file is an 81x81 RGBA PNG with transparent background.
+ *
+ * Icons:
+ *   tab-todo      — Checkmark ✓
+ *   tab-category  — 2×2 grid
+ *   tab-settings  — Sliders (3 lines with knobs)
  *
  * Usage: node generate-icons.js
- *
- * The generated PNGs are real, valid files that WeChat DevTools will accept.
- * Replace them later with proper designed icons if needed.
  */
 
 const fs = require('fs');
@@ -13,76 +15,26 @@ const path = require('path');
 const zlib = require('zlib');
 
 const OUTPUT_DIR = path.resolve(__dirname, '..', 'miniprogram', 'images');
+const SIZE = 81;
 
-// Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
-/**
- * Create a valid PNG file buffer for an 81x81 image filled with a single color.
- * PNG spec: signature + IHDR + IDAT (deflated raw pixel data) + IEND
- */
-function createPng(width, height, r, g, b, a) {
-  // --- PNG Signature ---
-  const signature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+// ========== PNG Encoding ==========
 
-  // --- IHDR chunk ---
-  const ihdrData = Buffer.alloc(13);
-  ihdrData.writeUInt32BE(width, 0);   // width
-  ihdrData.writeUInt32BE(height, 4);  // height
-  ihdrData.writeUInt8(8, 8);          // bit depth
-  ihdrData.writeUInt8(6, 9);          // color type: RGBA
-  ihdrData.writeUInt8(0, 10);         // compression
-  ihdrData.writeUInt8(0, 11);         // filter
-  ihdrData.writeUInt8(0, 12);         // interlace
-  const ihdr = makeChunk('IHDR', ihdrData);
-
-  // --- IDAT chunk ---
-  // Raw image data: for each row, 1 filter byte (0 = None) + width * 4 bytes (RGBA)
-  const rowSize = 1 + width * 4;
-  const rawData = Buffer.alloc(rowSize * height);
-  for (let y = 0; y < height; y++) {
-    const offset = y * rowSize;
-    rawData[offset] = 0; // filter byte: None
-    for (let x = 0; x < width; x++) {
-      const px = offset + 1 + x * 4;
-      rawData[px] = r;
-      rawData[px + 1] = g;
-      rawData[px + 2] = b;
-      rawData[px + 3] = a;
-    }
-  }
-  const compressed = zlib.deflateSync(rawData);
-  const idat = makeChunk('IDAT', compressed);
-
-  // --- IEND chunk ---
-  const iend = makeChunk('IEND', Buffer.alloc(0));
-
-  return Buffer.concat([signature, ihdr, idat, iend]);
-}
-
-/**
- * Build a PNG chunk: length(4) + type(4) + data + crc32(4)
- */
 function makeChunk(type, data) {
   const typeBuffer = Buffer.from(type, 'ascii');
   const length = Buffer.alloc(4);
   length.writeUInt32BE(data.length, 0);
-
   const crcInput = Buffer.concat([typeBuffer, data]);
   const crc = crc32(crcInput);
   const crcBuf = Buffer.alloc(4);
   crcBuf.writeUInt32BE(crc, 0);
-
   return Buffer.concat([length, typeBuffer, data, crcBuf]);
 }
 
-/**
- * CRC-32 (used by PNG for chunk integrity)
- */
 function crc32(buf) {
-  // Build table on first call
   if (!crc32.table) {
     crc32.table = new Uint32Array(256);
     for (let n = 0; n < 256; n++) {
@@ -100,32 +52,166 @@ function crc32(buf) {
   return (crc ^ 0xFFFFFFFF) >>> 0;
 }
 
-// ---------- Icon definitions ----------
-
-const SIZE = 81;
-
-// Colors — Analog Planner palette
-const WARM_GRAY = { r: 0xB5, g: 0xA9, b: 0x9B };  // --text-tertiary
-const SIENNA = { r: 0xC4, g: 0x57, b: 0x2A };      // --color-sienna (active)
-
-const icons = [
-  { name: 'tab-todo.png',            color: WARM_GRAY },
-  { name: 'tab-todo-active.png',     color: SIENNA },
-  { name: 'tab-category.png',        color: WARM_GRAY },
-  { name: 'tab-category-active.png', color: SIENNA },
-  { name: 'tab-settings.png',        color: WARM_GRAY },
-  { name: 'tab-settings-active.png', color: SIENNA },
-];
-
-console.log(`Generating ${icons.length} placeholder icons (${SIZE}x${SIZE}) ...`);
-console.log(`Output directory: ${OUTPUT_DIR}\n`);
-
-for (const icon of icons) {
-  const { r, g, b } = icon.color;
-  const buf = createPng(SIZE, SIZE, r, g, b, 255);
-  const outPath = path.join(OUTPUT_DIR, icon.name);
-  fs.writeFileSync(outPath, buf);
-  console.log(`  Created: ${icon.name}  (${buf.length} bytes)`);
+function rawDataToPng(width, height, rawData) {
+  const signature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+  const ihdrData = Buffer.alloc(13);
+  ihdrData.writeUInt32BE(width, 0);
+  ihdrData.writeUInt32BE(height, 4);
+  ihdrData.writeUInt8(8, 8);
+  ihdrData.writeUInt8(6, 9); // RGBA
+  ihdrData.writeUInt8(0, 10);
+  ihdrData.writeUInt8(0, 11);
+  ihdrData.writeUInt8(0, 12);
+  const ihdr = makeChunk('IHDR', ihdrData);
+  const compressed = zlib.deflateSync(rawData);
+  const idat = makeChunk('IDAT', compressed);
+  const iend = makeChunk('IEND', Buffer.alloc(0));
+  return Buffer.concat([signature, ihdr, idat, iend]);
 }
 
-console.log('\nDone. Replace these placeholders with real icons in WeChat DevTools.');
+// ========== Drawing Primitives ==========
+
+function createBlankRawData(width, height) {
+  const rowSize = 1 + width * 4;
+  const rawData = Buffer.alloc(rowSize * height, 0);
+  for (let y = 0; y < height; y++) {
+    rawData[y * rowSize] = 0; // filter byte: None
+  }
+  return rawData;
+}
+
+function setPixel(rawData, width, x, y, r, g, b, a) {
+  x = Math.round(x);
+  y = Math.round(y);
+  if (x < 0 || x >= width || y < 0 || y >= width) return;
+  const rowSize = 1 + width * 4;
+  const offset = y * rowSize + 1 + x * 4;
+  rawData[offset] = r;
+  rawData[offset + 1] = g;
+  rawData[offset + 2] = b;
+  rawData[offset + 3] = a;
+}
+
+function fillCircle(rawData, width, cx, cy, radius, r, g, b, a) {
+  const r2 = radius * radius;
+  const ceil = Math.ceil(radius) + 1;
+  for (let dy = -ceil; dy <= ceil; dy++) {
+    for (let dx = -ceil; dx <= ceil; dx++) {
+      if (dx * dx + dy * dy <= r2) {
+        setPixel(rawData, width, cx + dx, cy + dy, r, g, b, a);
+      }
+    }
+  }
+}
+
+function fillRect(rawData, width, x, y, w, h, r, g, b, a) {
+  for (let dy = 0; dy < h; dy++) {
+    for (let dx = 0; dx < w; dx++) {
+      setPixel(rawData, width, x + dx, y + dy, r, g, b, a);
+    }
+  }
+}
+
+function fillRoundRect(rawData, width, x, y, w, h, radius, r, g, b, a) {
+  for (let dy = 0; dy < h; dy++) {
+    for (let dx = 0; dx < w; dx++) {
+      let inside = true;
+      if (dx < radius && dy < radius) {
+        inside = (radius - dx) ** 2 + (radius - dy) ** 2 <= radius ** 2;
+      } else if (dx >= w - radius && dy < radius) {
+        inside = (dx - (w - 1 - radius)) ** 2 + (radius - dy) ** 2 <= radius ** 2;
+      } else if (dx < radius && dy >= h - radius) {
+        inside = (radius - dx) ** 2 + (dy - (h - 1 - radius)) ** 2 <= radius ** 2;
+      } else if (dx >= w - radius && dy >= h - radius) {
+        inside = (dx - (w - 1 - radius)) ** 2 + (dy - (h - 1 - radius)) ** 2 <= radius ** 2;
+      }
+      if (inside) {
+        setPixel(rawData, width, x + dx, y + dy, r, g, b, a);
+      }
+    }
+  }
+}
+
+function drawLine(rawData, width, x0, y0, x1, y1, thickness, r, g, b, a) {
+  const dx = Math.abs(x1 - x0);
+  const dy = Math.abs(y1 - y0);
+  const sx = x0 < x1 ? 1 : -1;
+  const sy = y0 < y1 ? 1 : -1;
+  let err = dx - dy;
+  let cx = x0, cy = y0;
+  const halfT = thickness / 2;
+
+  while (true) {
+    fillCircle(rawData, width, cx, cy, halfT, r, g, b, a);
+    if (cx === x1 && cy === y1) break;
+    const e2 = 2 * err;
+    if (e2 > -dy) { err -= dy; cx += sx; }
+    if (e2 < dx) { err += dx; cy += sy; }
+  }
+}
+
+// ========== Icon Shapes ==========
+
+function drawTodoIcon(rawData, width, r, g, b) {
+  // Checkmark: two line segments
+  drawLine(rawData, width, 18, 42, 32, 58, 6, r, g, b, 255);
+  drawLine(rawData, width, 32, 58, 62, 22, 6, r, g, b, 255);
+}
+
+function drawCategoryIcon(rawData, width, r, g, b) {
+  // 2×2 grid of rounded squares
+  const s = 24;
+  const gap = 8;
+  const ox = Math.floor((width - 2 * s - gap) / 2);
+  const oy = ox;
+
+  fillRoundRect(rawData, width, ox, oy, s, s, 5, r, g, b, 255);
+  fillRoundRect(rawData, width, ox + s + gap, oy, s, s, 5, r, g, b, 255);
+  fillRoundRect(rawData, width, ox, oy + s + gap, s, s, 5, r, g, b, 255);
+  fillRoundRect(rawData, width, ox + s + gap, oy + s + gap, s, s, 5, r, g, b, 255);
+}
+
+function drawSettingsIcon(rawData, width, r, g, b) {
+  // Three horizontal lines with circle knobs at different positions
+  const lineYs = [22, 40, 58];
+  const knobXs = [30, 52, 38];
+  const lineX0 = 16;
+  const lineX1 = 64;
+  const lineH = 3;
+  const knobR = 7;
+
+  for (let i = 0; i < 3; i++) {
+    // Horizontal line
+    fillRect(rawData, width, lineX0, lineYs[i] - 1, lineX1 - lineX0, lineH, r, g, b, 255);
+    // Knob circle
+    fillCircle(rawData, width, knobXs[i], lineYs[i], knobR, r, g, b, 255);
+  }
+}
+
+// ========== Generate ==========
+
+const WARM_GRAY = { r: 0xB5, g: 0xA9, b: 0x9B };
+const SIENNA    = { r: 0xC4, g: 0x57, b: 0x2A };
+
+const iconDefs = [
+  { name: 'tab-todo.png',            draw: drawTodoIcon,     color: WARM_GRAY },
+  { name: 'tab-todo-active.png',     draw: drawTodoIcon,     color: SIENNA },
+  { name: 'tab-category.png',        draw: drawCategoryIcon, color: WARM_GRAY },
+  { name: 'tab-category-active.png', draw: drawCategoryIcon, color: SIENNA },
+  { name: 'tab-settings.png',        draw: drawSettingsIcon, color: WARM_GRAY },
+  { name: 'tab-settings-active.png', draw: drawSettingsIcon, color: SIENNA },
+];
+
+console.log(`Generating ${iconDefs.length} tab icons (${SIZE}×${SIZE}) ...`);
+console.log(`Output: ${OUTPUT_DIR}\n`);
+
+for (const icon of iconDefs) {
+  const rawData = createBlankRawData(SIZE, SIZE);
+  icon.draw(rawData, SIZE, icon.color.r, icon.color.g, icon.color.b);
+  const png = rawDataToPng(SIZE, SIZE, rawData);
+  const outPath = path.join(OUTPUT_DIR, icon.name);
+  fs.writeFileSync(outPath, png);
+  console.log(`  ${icon.name}  (${png.length} bytes)`);
+}
+
+console.log('\nDone.');

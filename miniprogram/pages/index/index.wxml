@@ -7,10 +7,10 @@
     </view>
     <view class="header-right">
       <view class="icon-btn" bindtap="goSearch">
-        <text class="icon-text">&#x2315;</text>
+        <text class="icon-text">搜</text>
       </view>
       <view class="icon-btn {{sortMode ? 'icon-btn--active' : ''}}" bindtap="toggleSortMode">
-        <text class="icon-text">&#x21C5;</text>
+        <text class="icon-text">排</text>
       </view>
     </view>
   </view>
