@@ -1,5 +1,6 @@
 const storage = require('../../utils/storage')
 const { showToast, showConfirm } = require('../../utils/util')
+const sound = require('../../utils/sound')
 
 Page({
   data: {
@@ -101,8 +102,11 @@ Page({
 
   onTodoToggle(e) {
     const { id } = e.detail
+    const todo = this.data.todos.find(t => (t.id || t._id) === id)
+    const wasCompleted = todo && todo.completed
     storage.toggleComplete(id).then(() => {
       wx.vibrateShort({ type: 'light' })
+      if (!wasCompleted) sound.playComplete()
       this.loadData()
     })
   },
@@ -148,6 +152,7 @@ Page({
     const app = getApp()
     const reminders = app.globalData.pendingReminders || []
     if (reminders.length > 0) {
+      sound.playReminder()
       this.setData({
         showReminder: true,
         reminders

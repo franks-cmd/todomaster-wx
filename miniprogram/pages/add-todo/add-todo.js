@@ -1,6 +1,7 @@
 const storage = require('../../utils/storage')
 const { showToast, parseDateTime } = require('../../utils/util')
 const { requestSubscription, hasPromptedSubscription, showSubscriptionGuide } = require('../../utils/subscription')
+const sound = require('../../utils/sound')
 
 Page({
   data: {
@@ -138,6 +139,7 @@ Page({
       : storage.createTodo(todoData)
 
     savePromise.then(() => {
+      if (!isEdit) sound.playCreate()
       showToast(isEdit ? '已更新' : '已创建')
 
       // 如果设了截止日期，请求订阅授权

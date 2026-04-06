@@ -1,5 +1,6 @@
 const storage = require('../../utils/storage')
 const { formatDateTime, formatRelativeTime, getDueStatus, showToast, showConfirm } = require('../../utils/util')
+const sound = require('../../utils/sound')
 
 Page({
   data: {
@@ -61,8 +62,10 @@ Page({
   },
 
   onToggle() {
+    const wasCompleted = this.data.todo && this.data.todo.completed
     storage.toggleComplete(this.todoId).then(() => {
       wx.vibrateShort({ type: 'light' })
+      if (!wasCompleted) sound.playComplete()
       this.loadTodo(this.todoId)
     })
   },
