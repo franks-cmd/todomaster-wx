@@ -71,8 +71,8 @@
       </view>
       <view class="option-divider"></view>
       <view class="settings-row">
-        <text class="row-title">基于</text>
-        <text class="row-value">TodoMaster</text>
+        <text class="row-title">开发者</text>
+        <text class="row-value">Frank Su</text>
       </view>
     </view>
   </view>

@@ -188,30 +188,95 @@ function drawSettingsIcon(rawData, width, r, g, b) {
   }
 }
 
+// ========== Header Button Icons (48×48) ==========
+
+function strokeCircle(rawData, width, cx, cy, outerR, thickness, r, g, b, a) {
+  const outer2 = outerR * outerR;
+  const innerR = outerR - thickness;
+  const inner2 = innerR * innerR;
+  const range = Math.ceil(outerR) + 1;
+  for (let dy = -range; dy <= range; dy++) {
+    for (let dx = -range; dx <= range; dx++) {
+      const d2 = dx * dx + dy * dy;
+      if (d2 <= outer2 && d2 >= inner2) {
+        setPixel(rawData, width, cx + dx, cy + dy, r, g, b, a);
+      }
+    }
+  }
+}
+
+function drawSearchIcon(rawData, width, r, g, b) {
+  // Magnifying glass: circle + diagonal handle
+  const cx = Math.floor(width * 0.42);
+  const cy = Math.floor(width * 0.38);
+  const radius = Math.floor(width * 0.28);
+  const thick = Math.max(2, Math.floor(width * 0.06));
+
+  strokeCircle(rawData, width, cx, cy, radius, thick, r, g, b, 255);
+
+  // Handle: diagonal from bottom-right of circle
+  const angle = Math.PI / 4; // 45 degrees
+  const hx0 = Math.round(cx + (radius - 1) * Math.cos(angle));
+  const hy0 = Math.round(cy + (radius - 1) * Math.sin(angle));
+  const handleLen = Math.floor(width * 0.28);
+  const hx1 = Math.round(hx0 + handleLen * Math.cos(angle));
+  const hy1 = Math.round(hy0 + handleLen * Math.sin(angle));
+
+  drawLine(rawData, width, hx0, hy0, hx1, hy1, thick + 1, r, g, b, 255);
+}
+
+function drawSortIcon(rawData, width, r, g, b) {
+  // Sort: three horizontal lines of decreasing width (longest on top)
+  const thick = Math.max(3, Math.floor(width * 0.07));
+  const gap = Math.floor(width * 0.25);
+  const centerX = Math.floor(width / 2);
+  const startY = Math.floor(width * 0.22);
+
+  const widths = [
+    Math.floor(width * 0.7),  // longest
+    Math.floor(width * 0.5),  // medium
+    Math.floor(width * 0.3),  // shortest
+  ];
+
+  for (let i = 0; i < 3; i++) {
+    const ly = startY + i * gap;
+    const lx = centerX - Math.floor(widths[i] / 2);
+    fillRoundRect(rawData, width, lx, ly, widths[i], thick, 2, r, g, b, 255);
+  }
+}
+
 // ========== Generate ==========
 
 const WARM_GRAY = { r: 0xB5, g: 0xA9, b: 0x9B };
 const SIENNA    = { r: 0xC4, g: 0x57, b: 0x2A };
+const WALNUT    = { r: 0x2A, g: 0x1F, b: 0x14 };
+
+const ICON_SM = 48; // header button icons
 
 const iconDefs = [
-  { name: 'tab-todo.png',            draw: drawTodoIcon,     color: WARM_GRAY },
-  { name: 'tab-todo-active.png',     draw: drawTodoIcon,     color: SIENNA },
-  { name: 'tab-category.png',        draw: drawCategoryIcon, color: WARM_GRAY },
-  { name: 'tab-category-active.png', draw: drawCategoryIcon, color: SIENNA },
-  { name: 'tab-settings.png',        draw: drawSettingsIcon, color: WARM_GRAY },
-  { name: 'tab-settings-active.png', draw: drawSettingsIcon, color: SIENNA },
+  // Tab bar icons (81×81)
+  { name: 'tab-todo.png',            draw: drawTodoIcon,     color: WARM_GRAY, size: SIZE },
+  { name: 'tab-todo-active.png',     draw: drawTodoIcon,     color: SIENNA,    size: SIZE },
+  { name: 'tab-category.png',        draw: drawCategoryIcon, color: WARM_GRAY, size: SIZE },
+  { name: 'tab-category-active.png', draw: drawCategoryIcon, color: SIENNA,    size: SIZE },
+  { name: 'tab-settings.png',        draw: drawSettingsIcon, color: WARM_GRAY, size: SIZE },
+  { name: 'tab-settings-active.png', draw: drawSettingsIcon, color: SIENNA,    size: SIZE },
+  // Header button icons (48×48)
+  { name: 'icon-search.png',         draw: drawSearchIcon,   color: WALNUT,    size: ICON_SM },
+  { name: 'icon-sort.png',           draw: drawSortIcon,     color: WALNUT,    size: ICON_SM },
 ];
 
-console.log(`Generating ${iconDefs.length} tab icons (${SIZE}×${SIZE}) ...`);
+console.log(`Generating ${iconDefs.length} icons ...`);
 console.log(`Output: ${OUTPUT_DIR}\n`);
 
 for (const icon of iconDefs) {
-  const rawData = createBlankRawData(SIZE, SIZE);
-  icon.draw(rawData, SIZE, icon.color.r, icon.color.g, icon.color.b);
-  const png = rawDataToPng(SIZE, SIZE, rawData);
+  const s = icon.size;
+  const rawData = createBlankRawData(s, s);
+  icon.draw(rawData, s, icon.color.r, icon.color.g, icon.color.b);
+  const png = rawDataToPng(s, s, rawData);
   const outPath = path.join(OUTPUT_DIR, icon.name);
   fs.writeFileSync(outPath, png);
-  console.log(`  ${icon.name}  (${png.length} bytes)`);
+  console.log(`  ${icon.name}  (${s}×${s}, ${png.length} bytes)`);
 }
 
 console.log('\nDone.');

@@ -44,11 +44,12 @@
   border-color: var(--color-walnut);
 }
 
-.icon-text {
-  font-size: 30rpx;
+.icon-img {
+  width: 36rpx;
+  height: 36rpx;
 }
 
-.icon-btn--active .icon-text {
+.icon-btn--active .icon-img {
   filter: brightness(10);
 }
 
